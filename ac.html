@@ -11,13 +11,15 @@
         <script src="main.js"></script>
     </head>
     <body>
+        <h3 id="heading" class="btn btn-info">Object Detection</h3>
+        <button onclick="back()" class="btn btn-warning back">back</button>
         <center>
-            <h3 id="heading" class="btn btn-info">Object Detection</h3>
             <br><br>
             <button id="status" class="btn btn-warning button">Status:</button>
+            <button class="btn btn-info" id="objects">Number of Objects</button>
         </center>
         <script>
-            img="";
+img="";
 stats=true;
 objects=[];
 function preload(){
@@ -25,7 +27,7 @@ function preload(){
 }
 function setup(){
     canvas=createCanvas(640,420);
-    canvas.center();
+    canvas.position(400,300);
     objectDetector=ml5.objectDetector('cocossd',modelLoaded);
     document.getElementById("status").innerHTML="status:detecting objects";
 }
@@ -56,6 +58,9 @@ function gotResult(results,error){
         console.log(results);
         objects=results;
     }
+}
+function back(){
+    window.location="index.html";
 }
         </script>
     </body>
